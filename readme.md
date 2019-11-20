@@ -17,11 +17,25 @@ The overall program logic is the following:
 
 ## Setup
 
-Make sure you have following tools on you machine:
+Make sure you have following tools setup on you machine:
 
 * minikube = v1.5.2
 * go = v1.13.0
 * helm = v3.0.0
+
+Start the minikube via `minikube start` and verify that minikube is running:
+
+```sh
+$ minikube version
+minikube version: v1.5.2
+commit: 792dbf92a1de583fcee76f8791cff12e0c9440ad
+
+$ minikube status
+host: Running
+kubelet: Running
+apiserver: Running
+kubeconfig: Configured
+```
 
 ## Setup Seldon-operator
 
