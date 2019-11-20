@@ -10,9 +10,9 @@ The assignment is the following:
 
 The overall program logic is the following:
 
-1) load Seldon custom resource (CR) file e.g deploy.json and decode it into a SeldonDeployment object.
-2) create Seldon CR using Kubernete client from controller runtime pkg.
-3) periodically(1s) checking whether CR state == "Available"
+1) Load Seldon custom resource (CR) from file and decode it into a SeldonDeployment object.
+2) Create Seldon CR using Kubernete client from controller runtime pkg.
+3) Periodically(1s) checking whether CR state == "Available"
 4) Once CR state == "Available", delete the CR using the client.
 
 ## Setup
@@ -69,7 +69,10 @@ seldondeployments.machinelearning.seldon.io   2019-11-20T23:08:20Z
 go build -o seldon-assessment
 ```
 
-## Run seldon assessment
+## Run program
+
+The `seldon-assessment` binary has a flag `-cr_file` that specifies a seldon core CR path which is then used to create CR.
+
 
 ```sh
 ./seldon-assessment -cr_file=deploy.json
@@ -86,7 +89,8 @@ go build -o seldon-assessment
 
 ```
 
-on a second terminal run following to watch seldon-core creation/deletion
+On a second terminal, run following to watch seldon-core creation/deletion.
+
 ```sh
 $ kubectl get pod -w
 NAME                                               READY   STATUS    RESTARTS   AGE
