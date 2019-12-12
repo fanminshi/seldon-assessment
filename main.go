@@ -80,13 +80,13 @@ func main() {
 }
 
 func mustCreateSeldonObjFromFile(filename string) *v1alpha2.SeldonDeployment {
-	// create a universal decode from scheme pkg to decode bytes from file into SeldonDeployment obj.
-	decode := scheme.Codecs.UniversalDeserializer().Decode
 	jsonByt, err := ioutil.ReadFile(filename)
 	if err != nil {
 		log.Fatalf("failed to read Seldon custom resource file (%v): %v", filename, err)
 	}
 
+	// create a universal decode from scheme pkg to decode bytes from file into SeldonDeployment obj.
+	decode := scheme.Codecs.UniversalDeserializer().Decode
 	sd := &v1alpha2.SeldonDeployment{}
 	_, _, err = decode(jsonByt, nil, sd)
 	if err != nil {
